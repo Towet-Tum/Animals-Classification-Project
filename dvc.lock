@@ -1,0 +1,44 @@
+schema: '2.0'
+stages:
+  data_ingestion:
+    cmd: python src/animalClassifier/pipeline/stage_01_data_ingestion.py
+    deps:
+    - path: config/config.yaml
+      hash: md5
+      md5: 8eebc1278ab3a92229a4752e85952cc3
+      size: 360
+    - path: src/animalClassifier/pipeline/stage_01_data_ingestion.py
+      hash: md5
+      md5: ed61f64cb4ada18c7ce3e3d5743c24c0
+      size: 909
+    outs:
+    - path: artifacts/data_ingestion/animals
+      hash: md5
+      md5: 57bc47cfd52d5f6c8d0fe644381cce61.dir
+      size: 929650530
+      nfiles: 14976
+  training:
+    cmd: python src/animalClassifier/pipeline/stage_02_training.py
+    deps:
+    - path: artifacts/data_ingestion/animals
+      hash: md5
+      md5: 57bc47cfd52d5f6c8d0fe644381cce61.dir
+      size: 929650530
+      nfiles: 14976
+    - path: config/config.yaml
+      hash: md5
+      md5: 8eebc1278ab3a92229a4752e85952cc3
+      size: 360
+    - path: params.yaml
+      hash: md5
+      md5: 9b0bfc1b7e36a685fd485dc8946fe37c
+      size: 125
+    - path: src/animalClassifier/pipeline/stage_02_training.py
+      hash: md5
+      md5: 085895812859c9daa1c22e308894c85a
+      size: 796
+    outs:
+    - path: artifacts/training/vgg16_model.h5
+      hash: md5
+      md5: 94f9f842913a0816aff636c1ed6b0edb
+      size: 85302864

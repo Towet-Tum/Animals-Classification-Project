@@ -1,1 +1,7 @@
-git: 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
+git: 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
+
+IMG_SIZE: 224
+EPOCHS: 1
+INCLUDE_TOP: False
+BATCH_SIZE: 32
+WEIGHTS: 'imagenet'
